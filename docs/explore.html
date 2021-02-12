@@ -11,30 +11,23 @@
     <title>LegislatorLookup</title>
   </head>
   <body>
-    <h1>Landing page!</h1>
+    <h1>Explore page!</h1>
 
     <div id="navbuttons">
-      <p id="p1">Welcome to LegislatorLookup! Use the buttons below to navigate through the site.</p>
+      <p id="p1">This is the explore page! Use the buttons below to navigate through the site.</p>
     </div>
     <script>
-      var divref = document.getElementById("navbuttons");
+      var divref = document.getElementById("navbuttons"); 
       var mainbtn = document.createElement('button');
-      var expbtn = document.createElement('button');
-      mainbtn.textContent = 'Main Page';
-      expbtn.textContent = 'Explore Page';
+      mainbtn.textContent = 'Back to main page';
       
-      // Setting event listeners
+      // Setting event listener
       mainbtn.addEventListener("click", function(){
-        location = "https://lmcintosh623.github.io/LegislatorLookup/main.html"; // Navigate to main page
-      });
-      expbtn.addEventListener("click", function(){
-        location = "https://lmcintosh623.github.io/LegislatorLookup/explore.html"; // Navigate to explore page
+        location = "https://lmcintosh623.github.io/LegislatorLookup/main.html"; // Navigate to explore page
       });
       
       // Add buttons to landing page
       divref.insertBefore(mainbtn, divref.firstElementChild.nextSibling);
-      divref.insertBefore(expbtn, divref.firstElementChild.nextSibling.nextSibling);
-
     </script>
 
     <!-- Optional JavaScript -->
