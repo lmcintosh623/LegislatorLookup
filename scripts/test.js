@@ -55,4 +55,3 @@ Promise.all(list)
     });
     console.log(secondArray)
   }).catch(e => console.log(new Error(e)))
-C:\Users\lmcin\Downloads\test.js
