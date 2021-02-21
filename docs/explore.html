@@ -16,8 +16,14 @@
     <div id="navbuttons">
       <p id="p1">This is the explore page! Use the buttons below to navigate through the site.</p>
     </div>
+    <div id ="filter">
+      <p id="p2">Use the dropdown to select a legislative body to filter results by.</p>
+    </div>
     <script>
+      // Basic nav buttons
       var divref = document.getElementById("navbuttons"); 
+      var filterref = document.getElementById("filter");
+      
       var mainbtn = document.createElement('button');
       mainbtn.textContent = 'Back to main page';
       
@@ -28,7 +34,21 @@
       
       // Add buttons to landing page
       divref.insertBefore(mainbtn, divref.firstElementChild.nextSibling);
+      
     </script>
+
+    <br><br>
+    <label>Filter by political body</label>
+    <select name="filter" id=filter>
+      <option value="temp">Select option</option>
+      <option value="leg">Legislature</option>
+      <option value="upp">Upper</option>
+      <option value="low">Lower</option>
+      <option value="exe">Executive</option>
+      <option value="gov">Government</option>
+    </select>
+    <br><br>
+    <button id="sub" onclick="submitFilter(filter.value)">Submit</button>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
