@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from '../Dropdown.js';
+import { Dropdown } from '../LegBodyDropdown.js';
 
 export default function Explore() {
   return <Dropdown>Select an filter</Dropdown>;
