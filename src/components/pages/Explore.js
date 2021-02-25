@@ -1,5 +1,6 @@
 import React from 'react';
+import Dropdown from '../Dropdown.js';
 
 export default function Explore() {
-  return <h1 className='explore'>Explore</h1>;
+  return <Dropdown>Select an filter</Dropdown>;
 }
