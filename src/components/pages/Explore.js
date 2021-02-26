@@ -2,5 +2,5 @@ import React from 'react';
 import { Dropdown } from '../LegBodyDropdown.js';
 
 export default function Explore() {
-  return <Dropdown>Select an filter</Dropdown>;
+  return <Dropdown></Dropdown>;
 }
