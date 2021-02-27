@@ -1,5 +1,12 @@
 import React from 'react';
+import '../Main.css';
 
 export default function Main() {
-  return <h1 className='main'>MAIN</h1>;
+  return(
+    <body>
+      <div class = "container"> Legislators</div>
+      <div class = "container">Bills</div>
+    </body>
+
+  );
 }
