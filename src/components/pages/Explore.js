@@ -1,5 +1,6 @@
 import React from 'react';
+import { Dropdown } from '../LegBodyDropdown.js';
 
 export default function Explore() {
-  return <h1 className='explore'>Explore</h1>;
+  return <Dropdown></Dropdown>;
 }
