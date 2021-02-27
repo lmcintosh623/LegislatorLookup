@@ -1,10 +1,12 @@
 # LegislatorLookup
 
-Note: This doesn't include the node_modules folder, it would not let me upload it
-
-
 The current hosting of the website can be found through any web browser and navigating to:
 https://lmcintosh623.github.io/LegislatorLookup/
 
-Alternatively, cloning or downloading the project on the gh-pages branch, navigating to the
-docs folder and opening index.html will achieve the same effect without an internet connection.
+Alternatively, you can host the React application locally by following these steps:
+
+1. Git clone repository or download and unpack .zip file 
+2. Execute "npm install" in a terminal at the root of the project
+3. Once installed, execute "npm start". This will host the React app on localhost. 
+
+Note: Repository does not include the node_modules folder. 
