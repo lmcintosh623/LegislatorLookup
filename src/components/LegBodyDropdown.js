@@ -3,7 +3,8 @@ import './LegBodyDropdown.css';
 import Select from 'react-select';
 
 export function Dropdown() {
-  const [curState, setState] = useState([]);
+  const [curBody, setBody] = useState([]);
+  const [curJurisdiction, setJurisdiction] = useState('');
 
   const filters = [
     { value: 'legislative', label: 'Legislative' },
@@ -21,22 +22,21 @@ export function Dropdown() {
         primary25: '#87ceeb',
         primary: '#7A56D1'
       }
-
     }
   }
   
   // This gets called when the button is pressed
-  function getPeople(org_classification) {
+  function getPeople(org_classification, jurisdiction) {
 
-    console.log('org classification is'+org_classification.value)
+
+    console.log("jurisdiction is " + jurisdiction.value)
+    console.log("org class is "+org_classification.value)
 
     // Here's the headers
     const myHeaders = new Headers({
       'X-API-KEY': '7f7afdc0-15e1-461e-9d2c-1dec521187c8'
     });
 
-    var jurisdiction = 'Washington'
-    // org_classification = 'lower'
 
     // Here's the request
     const myRequest = new Request(`https://v3.openstates.org/people?jurisdiction=${jurisdiction}&include=other_identifiers&per_page=50&org_classification=${org_classification.value}`, {
@@ -55,22 +55,26 @@ export function Dropdown() {
       });
   }
 
-
   return (
    <>
       <Select
         options={filters}
         theme={customTheme}
         placeholder="Select a filter ..."
-        onChange={setState}
+        onChange={setBody}
       />
       
       <button
         as={"input"} 
         type={"submit"} 
-        onClick={()=> getPeople(curState)}
+        onClick={()=> getPeople(curBody, curJurisdiction)}
       >Submit</button>
+
+      <input
+        type="text"
+        onChange={e => setJurisdiction(e.target.value)}
+      />
+
    </>
   );
-    
 }
