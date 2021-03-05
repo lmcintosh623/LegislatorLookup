@@ -5,6 +5,7 @@ import Landing from "./components/pages/Landing";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Explore from "./components/pages/Explore";
 import SignUp from "./components/pages/SignUp";
+import About from "./components/pages/About";
 import Main from "./components/pages/Main";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/explore" component={Explore} />
         <Route path="/main" component={Main} />
         <Route path="/sign-up" component={SignUp} />
+        <Route path="/about" component={About} />
       </Switch>
     </Router>
   );
