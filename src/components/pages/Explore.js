@@ -1,6 +1,13 @@
-import React from 'react';
-import { Dropdown } from '../LegBodyDropdown.js';
+import Promise from 'promise-polyfill';
+import { render } from '@testing-library/react';
+import {Table} from './Table'; 
+
 
 export default function Explore() {
-  return <Dropdown></Dropdown>;
+  return(
+    <div className="App">
+      <Table/>
+    </div>
+  )
+
 }
