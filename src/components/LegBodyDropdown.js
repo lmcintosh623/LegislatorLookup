@@ -28,9 +28,25 @@ export function Dropdown() {
   // This gets called when the button is pressed
   function getPeople(org_classification, jurisdiction) {
 
+    let failedString = "/* Form data missing: \n"
+    let failed = false;
 
-    console.log("jurisdiction is " + jurisdiction.value)
-    console.log("org class is "+org_classification.value)
+    if(!jurisdiction){
+      failedString += " * Juridiction is needed to apply a filter"
+      failed = true
+    } 
+    if(!org_classification.value){
+      failedString += " * Classification is required to apply a filter\n"
+      failed = true
+    }
+
+    if(failed){
+      failedString += " */\n"
+      alert(failedString)
+      return
+    }
+    // console.log("jurisdiction is " + jurisdiction)
+    // console.log("org class is "+org_classification.value)
 
     // Here's the headers
     const myHeaders = new Headers({
@@ -48,16 +64,26 @@ export function Dropdown() {
 
     // Fetch and process
     fetch(myRequest)
-      .then(response => response.json())
+      .then((response) => {
+        if(!response.ok) throw new Error(response.statusText);
+        else return response.json(); 
+      })
       .then(data => {
         // Eventually do stuff with this data
-        console.log(data)
+        if(data.results.length === 0){
+          alert("ERROR: Empty list returned; bad input argument for state: \"" + org_classification.value + "\"");
+          return;
+        }
+       console.log(data)
+      }).catch((error) => {
+        console.log(error);
       });
   }
 
   return (
    <>
       <Select
+        required
         options={filters}
         theme={customTheme}
         placeholder="Select a filter ..."
