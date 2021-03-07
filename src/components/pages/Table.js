@@ -7,6 +7,7 @@ export const Table=()=>{
     return(<div>
         <MaterialTable 
           title ="Explore Legislators"
+          
           columns={[  
             {
               filtering: false, 
@@ -31,7 +32,9 @@ export const Table=()=>{
           data={query =>
             new Promise((resolve, reject) => {
               // let url = `https://v3.openstates.org/people?jurisdiction=Washington&include=sources&include=other_identifiers&per_page=4&org_classification=lower&apikey=7f7afdc0-15e1-461e-9d2c-1dec521187c8`
-              let url = `https://v3.openstates.org/people?jurisdiction=Washington&include=sources&include=other_identifiers&per_page=4&org_classification=lower&apikey=bf41dac1-543d-4b1d-a373-ebf272baa921`
+                 let url = `https://v3.openstates.org/people?jurisdiction=Washington&include=sources&include=other_identifiers&per_page=`
+              url+= (query.pageSize)
+              url+= `&org_classification=lower&apikey=bf41dac1-543d-4b1d-a373-ebf272baa921`        
               url += '&page=' + (query.page + 1)
               // TODO add variables
               // url += `&org_classification=${org_classification}`
