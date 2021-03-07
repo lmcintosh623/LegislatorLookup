@@ -6,8 +6,10 @@ import {Table} from './Table';
 export default function Explore() {
   return(
     <div className="App">
-      <Dropdown></Dropdown>
-      <Table/>
+      <div className="explore-left-half">
+        <Dropdown></Dropdown>
+        <Table/>
+      </div>
     </div>
   )
 }
