@@ -8,16 +8,27 @@ export const Table=()=>{
         <MaterialTable 
           title ="Explore Legislators"
           columns={[  
-            {title:'Image', field: 'image', render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={rowData.image} alt='some text'/>)},
-            { title: 'Full Name', field: 'name' },
-            { title: 'Party', field: 'party',lookup: { 'Democratic': 'Democratic', 'Republican': 'Republican' } },
-            { title: 'Position', field: 'current_role.title' },
-            { title: 'Email', field: 'email' },
-                    
+            {
+              filtering: false, 
+              title:'Image', field: 'image', 
+              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={rowData.image} alt='some text'/>)
+            },
+            { 
+              title: 'Full Name', 
+              field: 'name' },
+            { 
+              title: 'Party', field: 'party',lookup: { 'Democratic': 'Democratic', 'Republican': 'Republican' } 
+            },
+            {
+              title: 'Position', field: 'current_role.title' 
+            },
+            {
+              title: 'Email', field: 'email' 
+            },
           ]}
           data={query =>
             new Promise((resolve, reject) => {
-              let url = `https://v3.openstates.org/people?jurisdiction=Washington&include=sources&include=other_identifiers&per_page=1&org_classification=lower&apikey=7f7afdc0-15e1-461e-9d2c-1dec521187c8&page=1`
+              let url = `https://v3.openstates.org/people?jurisdiction=Washington&include=sources&include=other_identifiers&per_page=4&org_classification=lower&apikey=7f7afdc0-15e1-461e-9d2c-1dec521187c8&page=1`
 
               fetch(url)
                 .then(response => response.json())
