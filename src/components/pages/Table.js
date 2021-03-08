@@ -65,23 +65,9 @@ export const Table=()=>{
   const[userLeg, setUserLeg] = useState('lower');
   const[userStateTOF, setUserStateTOF] = useState(false);
   const[userLegTOF, setUserLegTOF] = useState(false);
-  const[userBothTOF, setBothTOF] = useState(false);
-
 
   const doChange1 = () => setUserStateTOF(true);
   const doChange2 = () => setUserLegTOF(true);
-  const doChange3 = () => setBothTOF(true);
-  const doChange4 = () => setBothTOF(false);
-
-
-  function both(){
-    if (userStateTOF == true && userLegTOF == true) {
-      doChange3()
-    } else {
-      doChange4()
-    }
-  }
-
 
   function change1(){
     doChange1()
@@ -181,7 +167,6 @@ export const Table=()=>{
             isSearchable
             />
 
-
       <Select className='tablep'
         required
         options={filters}
@@ -200,11 +185,6 @@ export const Table=()=>{
         }
 
       >Submit</button>
-
-      <input
-        type="text"
-        onChange={e => setJurisdiction(e.target.value)}
-      />
 
    </>
 
