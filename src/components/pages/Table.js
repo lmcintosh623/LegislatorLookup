@@ -3,7 +3,6 @@ import MaterialTable from 'material-table'
 import {useState, useEffect} from 'react';
 import Select from 'react-select'
 import './table.css';
-import './LegDropdown.css';
 
 const states = [
   { value: 'alabama',label:'Alabama'},
