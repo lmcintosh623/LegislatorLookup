@@ -211,6 +211,11 @@ export const Table=()=>{
             {
               title: 'Email', field: 'email' 
             },
+            {
+              filtering: false,
+              title: 'Website', field: 'openstates_url',
+              render: rowData=> (<a href={rowData.openstates_url}>Click Here</a> )
+            }
           ]}
           data={query =>
             new Promise((resolve, reject) => {
@@ -249,5 +254,3 @@ export const Table=()=>{
         />
     </div>)
 }
-
-  
