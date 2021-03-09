@@ -199,7 +199,7 @@ export const Table=()=>{
             {
               filtering: false, 
               title:'Image', field: 'image', 
-              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={rowData.image} alt='some text'/>)
+              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={"https://" + String(rowData.image).slice(11)} alt='some text'/>)
             },
             { 
               title: 'Full Name', 
@@ -215,6 +215,11 @@ export const Table=()=>{
             {
               title: 'Email', field: 'email' 
             },
+            {
+              filtering: false,
+              title: 'Website', field: 'openstates_url',
+              render: rowData=> (<a href={rowData.openstates_url}>Click Here</a> )
+            }
           ]}
           data={query =>
             new Promise((resolve, reject) => {
@@ -255,5 +260,3 @@ export const Table=()=>{
         />
     </div>)
 }
-
-  
