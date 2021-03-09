@@ -55,5 +55,5 @@
 .explore-left-half {
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  width: 100vw;
 }
