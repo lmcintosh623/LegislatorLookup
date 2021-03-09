@@ -146,7 +146,7 @@ export const Table=()=>{
           alert("ERROR: Empty list returned; bad input argument for state: \"" + org_classification.value + "\"");
           return;
         }
-       console.log(data)
+       console.log(data.results[0].image)
       }).catch((error) => {
         console.log(error);
       });
@@ -160,6 +160,20 @@ export const Table=()=>{
   function handleUserLegChange(e){
     change2()
     setUserLeg(e.value)
+  }
+
+  function urlCleaner(url){
+    let re1  = new RegExp('^.*(www.)')
+    if(re1.test(url)){
+      url.replace(re1, 'https://')
+    }
+    else{
+      re1 = new RegExp('(http://)') 
+      if(re1.test(url)){
+        url.replace(re1, 'https://')
+      }
+    }
+    return url
   }
 
 
@@ -207,7 +221,8 @@ export const Table=()=>{
             {
               filtering: false, 
               title:'Image', field: 'image', 
-              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={"https://" + String(rowData.image).slice(11)} alt='some text'/>)
+              // render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={"https://" + String(rowData.image).slice(11)} alt='some text'/>)
+              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={urlCleaner(rowData.image)} alt='some text'/>)
             },
             { 
               title: 'Full Name', 
