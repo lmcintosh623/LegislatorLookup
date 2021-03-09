@@ -69,6 +69,8 @@ export const Table=()=>{
   const doChange1 = () => setUserStateTOF(true);
   const doChange2 = () => setUserLegTOF(true);
 
+  const tableRef = React.createRef();
+
   function change1(){
     doChange1()
   }
@@ -179,7 +181,8 @@ export const Table=()=>{
         type={"submit"} 
         onClick={()=> 
           (userStateTOF == true && userLegTOF == true) ?
-            getPeople(userLeg, userState)
+            // getPeople(userLeg, userState)
+            tableRef.current.onQueryChange()
           :
           alert("make a selection")
         }
@@ -189,6 +192,7 @@ export const Table=()=>{
    </>
 
         <MaterialTable 
+          tableRef={tableRef}
           title ="Explore Legislators"
           
           columns={[  
@@ -219,6 +223,8 @@ export const Table=()=>{
               url+= (query.pageSize)
               url+= `&org_classification=${userLeg}&apikey=bf41dac1-543d-4b1d-a373-ebf272baa921`        
               url += '&page=' + (query.page + 1)
+              console.log(userState)
+              console.log(userLeg)
               // TODO add variables
               // url += `&org_classification=${org_classification}`
               // url += `&jurisdiction=${jurisdiction}`
