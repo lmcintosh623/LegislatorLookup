@@ -58,9 +58,6 @@ const states = [
  ];
 
 export const Table=()=>{
-  const [curState, setState] = useState([]);
-  const [curBody, setBody] = useState([]);
-  const [curJurisdiction, setJurisdiction] = useState('');
   const[userState, setUserState] = useState('Washington');
   const[userLeg, setUserLeg] = useState('lower');
   const[userStateTOF, setUserStateTOF] = useState(false);
@@ -155,6 +152,16 @@ export const Table=()=>{
       });
   }
 
+  function handleUserStateChange(e){
+    change1() // mark this selection as active
+    setUserState(e.label) // set state value to selection contents
+  }
+
+  function handleUserLegChange(e){
+    change2()
+    setUserLeg(e.value)
+  }
+
 
     return(<div>
 
@@ -162,7 +169,9 @@ export const Table=()=>{
 <>
           <Select className='tablep2'
             options={states}
-            onChange={setState, setUserState, change1}
+            // onChange={setState, setUserState, change1}
+            // onChange={setState, setUserState, change1}
+            onChange={handleUserStateChange}
             theme={customTheme}
             placeholder="Select your State ..."
             noOptionsMessage={() => "No State Matches Result"}
@@ -174,19 +183,18 @@ export const Table=()=>{
         options={filters}
         theme={customTheme}
         placeholder="Select a filter ..."
-        onChange={setBody, setUserLeg, change2}
+        // onChange={setBody, setUserLeg, change2}
+        onChange={handleUserLegChange}
       />
       <button
         as={"input"} 
         type={"submit"} 
         onClick={()=> 
           (userStateTOF == true && userLegTOF == true) ?
-            // getPeople(userLeg, userState)
             tableRef.current.onQueryChange()
           :
           alert("make a selection")
         }
-
       >Submit</button>
 
    </>
@@ -223,16 +231,10 @@ export const Table=()=>{
           ]}
           data={query =>
             new Promise((resolve, reject) => {
-              //let url = `https://v3.openstates.org/people?jurisdiction=${userState}&include=sources&include=other_identifiers&per_page=4&org_classification=${userLeg}&apikey=7f7afdc0-15e1-461e-9d2c-1dec521187c8`
-                 let url = `https://v3.openstates.org/people?jurisdiction=${userState}&include=sources&include=other_identifiers&per_page=`
+              let url = `https://v3.openstates.org/people?jurisdiction=${userState}&include=sources&include=other_identifiers&per_page=`
               url+= (query.pageSize)
               url+= `&org_classification=${userLeg}&apikey=bf41dac1-543d-4b1d-a373-ebf272baa921`        
               url += '&page=' + (query.page + 1)
-              console.log(userState)
-              console.log(userLeg)
-              // TODO add variables
-              // url += `&org_classification=${org_classification}`
-              // url += `&jurisdiction=${jurisdiction}`
 
               fetch(url)
                 .then(response => response.json())
