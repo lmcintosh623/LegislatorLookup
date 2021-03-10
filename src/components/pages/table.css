@@ -5,4 +5,23 @@
 .tablep2 {
   position: relative;
   z-index: 2000;
+  width: 80vw;
+}
+
+.submitButton {
+  padding: 5px;
+  width: 15vw;
+  height: 37.5px;
+  border-color: #7A56D1;
+  background-color: white;
+  color: #7A56D1;
+  border-width: 3px;
+  border-radius: 6%;
+  margin-left: 2.5vw;
+}
+
+.controlContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
 }

@@ -90,25 +90,32 @@ export const BillTable=()=>{
     return(<div>
 
 
-<>
-          <Select className='tablep2'
-            options={states}
-            onChange={handleUserStateChange}
-            theme={customTheme}
-            placeholder="Select your State ..."
-            noOptionsMessage={() => "No State Matches Result"}
-            isSearchable
+<>  
+    <div className="controlContainer">
+        <div className="filterContainer">
+            <Select className='tablep2'
+                options={states}
+                onChange={handleUserStateChange}
+                theme={customTheme}
+                placeholder="Select your State ..."
+                noOptionsMessage={() => "No State Matches Result"}
+                isSearchable
             />
-      <button
-        as={"input"} 
-        type={"submit"} 
-        onClick={()=> 
-          (userStateTOF === true) ?
-            tableRef.current.onQueryChange()
-          :
-            alert("Select a U.S state from dropdown list.")
-        }
-      >Submit</button>
+        </div>
+        <div className="submitContainer">
+            <button
+                className={"submitButton"}
+                as={"input"} 
+                type={"submit"} 
+                onClick={()=> 
+                (userStateTOF === true) ?
+                    tableRef.current.onQueryChange()
+                :
+                    alert("Select a U.S state from dropdown list.")
+                }>Submit
+            </button>
+        </div>
+    </div>
 
    </>
 

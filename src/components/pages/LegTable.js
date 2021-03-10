@@ -108,11 +108,15 @@ export const LegTable=()=>{
     setUserLeg(e.value)
   }
 
+  function handleImageError(e){
+    e.target.src = img_not_found
+    e.target.alt = 'Image not found'
+  }
+
   function urlCleaner(url){
     if(url === ""){
       return img_not_found
     }
-    console.log(url)
     let re1  = new RegExp('^.*(www.)')
     if(re1.test(url)){
       url.replace(re1, 'https://')
@@ -123,6 +127,7 @@ export const LegTable=()=>{
         url.replace(re1, 'https://')
       }
     }
+    console.log(url)
     return url
   }
 
@@ -130,14 +135,14 @@ export const LegTable=()=>{
 
 
 <>
-          <Select className='tablep2'
-            options={states}
-            onChange={handleUserStateChange}
-            theme={customTheme}
-            noOptionsMessage={() => "No State Matches Result"}
-            isSearchable
-            />
-
+    
+      <Select className='tablep2'
+      options={states}
+      onChange={handleUserStateChange}
+      theme={customTheme}
+      noOptionsMessage={() => "No State Matches Result"}
+      isSearchable
+      />
       <Select className='tablep'
         required
         options={filters}
@@ -146,6 +151,7 @@ export const LegTable=()=>{
         onChange={handleUserLegChange}
       />
       <button
+        className={"submitButton"}
         as={"input"} 
         type={"submit"} 
         onClick={()=> 
@@ -166,7 +172,7 @@ export const LegTable=()=>{
             {
               filtering: false, 
               title:'Image', field: 'image', 
-              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={urlCleaner(rowData.image)} alt='some text'/>)
+              render: rowData=> (<img onError={handleImageError} style={{ height: 120, borderRadius: '80%' }} src={urlCleaner(rowData.image)} alt='some text'/>)
             },
             { 
               title: 'Full Name', 
