@@ -3,7 +3,8 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Landing from "./components/pages/Landing";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Explore from "./components/pages/Explore";
+import LegExplore from "./components/pages/LegExplore";
+import BillExplore from "./components/pages/BillExplore";
 import SignUp from "./components/pages/SignUp";
 import About from "./components/pages/About";
 import Main from "./components/pages/Main";
@@ -14,7 +15,8 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/LegislatorLookup" exact component={Landing} />
-        <Route path="/explore" component={Explore} />
+        <Route path="/exploreleg" component={LegExplore} />
+        <Route path="/explorebill" component={BillExplore} />
         <Route path="/main" component={Main} />
         <Route path="/sign-up" component={SignUp} />
         <Route path="/about" component={About} />

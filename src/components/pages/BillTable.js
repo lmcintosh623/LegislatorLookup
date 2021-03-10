@@ -1,6 +1,6 @@
 import React from 'react'
 import MaterialTable from 'material-table'
-import {useState, useEffect} from 'react';
+import { useState } from 'react';
 import Select from 'react-select'
 import './table.css';
 
@@ -57,23 +57,16 @@ const states = [
   { value: 'wyoming',label:'Wyoming'} 
  ];
 
-export const Table=()=>{
-  const[userState, setUserState] = useState('Washington');
-  const[userLeg, setUserLeg] = useState('lower');
+export const BillTable=()=>{
+  const[userState, setUserState] = useState('District of Columbia');
   const[userStateTOF, setUserStateTOF] = useState(false);
-  const[userLegTOF, setUserLegTOF] = useState(false);
 
   const doChange1 = () => setUserStateTOF(true);
-  const doChange2 = () => setUserLegTOF(true);
 
   const tableRef = React.createRef();
 
   function change1(){
     doChange1()
-  }
-
-  function change2(){
-    doChange2()
   }
 
   function customTheme(theme) {
@@ -88,92 +81,9 @@ export const Table=()=>{
     }
   }
 
-
-  const filters = [
-    { value: 'legislative', label: 'Legislative' },
-    { value: 'upper', label: 'Upper' },
-    { value: 'lower', label: 'Lower' },
-    { value: 'executive', label: 'Executive' },
-    { value: 'government', label: 'Government' }
-  ]
-  
-  // This gets called when the button is pressed
-  function getPeople(org_classification, jurisdiction) {
-
-    let failedString = "/* Form data missing: \n"
-    let failed = false;
-
-    if(!jurisdiction){
-      failedString += " * Juridiction is needed to apply a filter"
-      failed = true
-    } 
-    if(!org_classification.value){
-      failedString += " * Classification is required to apply a filter\n"
-      failed = true
-    }
-
-    if(failed){
-      failedString += " */\n"
-      alert(failedString)
-      return
-    }
-    // console.log("jurisdiction is " + jurisdiction)
-    // console.log("org class is "+org_classification.value)
-
-    // Here's the headers
-    const myHeaders = new Headers({
-      'X-API-KEY': '7f7afdc0-15e1-461e-9d2c-1dec521187c8'
-    });
-
-
-    // Here's the request
-    const myRequest = new Request(`https://v3.openstates.org/people?jurisdiction=${jurisdiction}&include=other_identifiers&per_page=50&org_classification=${org_classification.value}`, {
-      method: 'GET',
-      headers: myHeaders,
-      mode: 'cors',
-      cache: 'default',
-    });
-
-    // Fetch and process
-    fetch(myRequest)
-      .then((response) => {
-        if(!response.ok) throw new Error(response.statusText);
-        else return response.json(); 
-      })
-      .then(data => {
-        // Eventually do stuff with this data
-        if(data.results.length === 0){
-          alert("ERROR: Empty list returned; bad input argument for state: \"" + org_classification.value + "\"");
-          return;
-        }
-       console.log(data.results[0].image)
-      }).catch((error) => {
-        console.log(error);
-      });
-  }
-
   function handleUserStateChange(e){
     change1() // mark this selection as active
     setUserState(e.label) // set state value to selection contents
-  }
-
-  function handleUserLegChange(e){
-    change2()
-    setUserLeg(e.value)
-  }
-
-  function urlCleaner(url){
-    let re1  = new RegExp('^.*(www.)')
-    if(re1.test(url)){
-      url.replace(re1, 'https://')
-    }
-    else{
-      re1 = new RegExp('(http://)') 
-      if(re1.test(url)){
-        url.replace(re1, 'https://')
-      }
-    }
-    return url
   }
 
 
@@ -183,31 +93,20 @@ export const Table=()=>{
 <>
           <Select className='tablep2'
             options={states}
-            // onChange={setState, setUserState, change1}
-            // onChange={setState, setUserState, change1}
             onChange={handleUserStateChange}
             theme={customTheme}
             placeholder="Select your State ..."
             noOptionsMessage={() => "No State Matches Result"}
             isSearchable
             />
-
-      <Select className='tablep'
-        required
-        options={filters}
-        theme={customTheme}
-        placeholder="Select a filter ..."
-        // onChange={setBody, setUserLeg, change2}
-        onChange={handleUserLegChange}
-      />
       <button
         as={"input"} 
         type={"submit"} 
         onClick={()=> 
-          (userStateTOF == true && userLegTOF == true) ?
+          (userStateTOF === true) ?
             tableRef.current.onQueryChange()
           :
-          alert("make a selection")
+            alert("Select a U.S state from dropdown list.")
         }
       >Submit</button>
 
@@ -215,41 +114,34 @@ export const Table=()=>{
 
         <MaterialTable 
           tableRef={tableRef}
-          title ="Explore Legislators"
+          title ="Explore Bills"
           
           columns={[  
             {
-              filtering: false, 
-              title:'Image', field: 'image', 
-              // render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={"https://" + String(rowData.image).slice(11)} alt='some text'/>)
-              render: rowData=> (<img style={{ height: 120, borderRadius: '80%' }} src={urlCleaner(rowData.image)} alt='some text'/>)
+                title: 'Title', field: 'title', type: 'string'
             },
             { 
-              title: 'Full Name', 
-              field: 'name',
-              type: 'string'
+                title: 'ID', field: 'identifier', type: 'string'
             },
             { 
-              title: 'Party', field: 'party',lookup: { 'Democratic': 'Democratic', 'Republican': 'Republican' } 
+                title: 'State', field: 'jurisdiction.name', type: 'string' 
             },
             {
-              title: 'Position', field: 'current_role.title' 
+                title: 'Latest Action Date', field: 'latest_action_date', type: 'string' 
             },
             {
-              title: 'Email', field: 'email' 
-            },
+                title: 'Latest Action Description', field: 'latest_action_description', type: 'string'            },
             {
-              filtering: false,
-              title: 'Website', field: 'openstates_url',
-              render: rowData=> (<a href={rowData.openstates_url}>Click Here</a> )
+                filtering: false,
+                title: 'More info', field: 'openstates_url',
+                render: rowData=> (<a href={rowData.openstates_url}>Click Here</a> )
             }
           ]}
           data={query =>
             new Promise((resolve, reject) => {
-              let url = `https://v3.openstates.org/people?jurisdiction=${userState}&include=sources&include=other_identifiers&per_page=`
-              url+= (query.pageSize)
-              url+= `&org_classification=${userLeg}&apikey=bf41dac1-543d-4b1d-a373-ebf272baa921`        
-              url += '&page=' + (query.page + 1)
+              let url = `https://v3.openstates.org/bills?jurisdiction=${userState}&sort=updated_desc`
+              url+= `&per_page=${(query.pageSize)}`
+              url+= `&apikey=bf41dac1-543d-4b1d-a373-ebf272baa921&page=${(query.page + 1)}`
 
               fetch(url)
                 .then(response => response.json())

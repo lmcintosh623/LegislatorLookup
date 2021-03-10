@@ -35,11 +35,20 @@ function Navbar() {
           </li>
           <li className='nav-item'>
             <Link
-              to='/explore'
+              to='/exploreleg'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Explore
+              Legislators
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/explorebill'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Bills
             </Link>
           </li>
           <li className='nav-item'>

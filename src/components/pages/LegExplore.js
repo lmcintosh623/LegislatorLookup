@@ -1,13 +1,12 @@
 import React from 'react';
-import { Dropdown } from '../LegBodyDropdown.js';
-import {Table} from './Table'; 
+import {LegTable} from './LegTable'; 
 
 
-export default function Explore() {
+export default function LegExplore() {
   return(
     <div className="App">
       <div className="explore-left-half">
-        <Table/>
+        <LegTable/>
       </div>
     </div>
   )
