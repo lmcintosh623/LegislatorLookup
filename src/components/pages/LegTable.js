@@ -135,32 +135,38 @@ export const LegTable=()=>{
 
 
 <>
-    
-      <Select className='tablep2'
-      options={states}
-      onChange={handleUserStateChange}
-      theme={customTheme}
-      noOptionsMessage={() => "No State Matches Result"}
-      isSearchable
-      />
-      <Select className='tablep'
-        required
-        options={filters}
-        theme={customTheme}
-        placeholder="Select a filter ..."
-        onChange={handleUserLegChange}
-      />
-      <button
-        className={"submitButton"}
-        as={"input"} 
-        type={"submit"} 
-        onClick={()=> 
-          (userStateTOF === true || userLegTOF === true) ?
-            tableRef.current.onQueryChange()
-          :
-            alert("Select a U.S state and/or a legislative body.")
-        }
-      >Submit</button>
+  <div className="controlContainer">
+      <div className="filterContainer">
+        <Select className='tablep'
+          options={states}
+          onChange={handleUserStateChange}
+          theme={customTheme}
+          placeholder="State"
+          noOptionsMessage={() => "No State Matches Result"}
+          isSearchable
+        />
+        <Select className='tablep'
+          required
+          options={filters}
+          theme={customTheme}
+          placeholder="Legislative Body"
+          onChange={handleUserLegChange}
+        />
+      </div>
+      <div className="submitContainer">
+        <button
+          className={"submitButton"}
+          as={"input"} 
+          type={"submit"} 
+          onClick={()=> 
+            (userStateTOF === true || userLegTOF === true) ?
+              tableRef.current.onQueryChange()
+            :
+              alert("Select a U.S state and/or a legislative body.")
+          }>Submit
+        </button>
+      </div>
+  </div>
 
    </>
 

@@ -1,27 +1,43 @@
 .tablep {
   position: relative;
   z-index: 1000;
+  width: 48.5vw;
+  margin-left: 5px;
+  margin-right: 5px;
 }
-.tablep2 {
+/* .tablep2 {
   position: relative;
   z-index: 2000;
-  width: 80vw;
+  width: 40vw;
+} */
+
+.tablepBill {
+  position: relative;
+  z-index: 1000;
+  width: 98vw;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .submitButton {
-  padding: 5px;
-  width: 15vw;
+  width: 98vw;
   height: 37.5px;
   border-color: #7A56D1;
   background-color: white;
   color: #7A56D1;
+  font-size: larger;
   border-width: 3px;
-  border-radius: 6%;
-  margin-left: 2.5vw;
+  border-radius: 3%;
+  margin: 5px;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 .controlContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 5px;
 }

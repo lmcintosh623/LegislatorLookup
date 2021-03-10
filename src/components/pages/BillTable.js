@@ -93,11 +93,11 @@ export const BillTable=()=>{
 <>  
     <div className="controlContainer">
         <div className="filterContainer">
-            <Select className='tablep2'
+            <Select className='tablepBill'
                 options={states}
                 onChange={handleUserStateChange}
                 theme={customTheme}
-                placeholder="Select your State ..."
+                placeholder="State"
                 noOptionsMessage={() => "No State Matches Result"}
                 isSearchable
             />
