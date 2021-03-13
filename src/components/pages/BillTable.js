@@ -163,7 +163,7 @@ export const BillTable=()=>{
                 })
             })
           }options={{
-            search: true,
+            search: false,
             paging: true,
             filtering: false,
             exportButton: true,
