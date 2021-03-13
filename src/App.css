@@ -52,8 +52,21 @@
   font-size: 100px;
 }
 
-.explore-left-half {
+.main-left-half {
   display: flex;
   flex-direction: column;
+  width: 48vw;
+  padding: 0.5vw;
+}
+
+.main-right-half {
+  display: flex;
+  flex-direction: column;
+  width: 55vw;
+  padding: 0.5vw;
+}
+.main-both-halves {
+  display: flex;
+  flex-direction: row;
   width: 100vw;
 }
