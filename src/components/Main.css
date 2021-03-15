@@ -1,7 +1,8 @@
-.container{
-    width:90%;
-    height:50%;
-    background:rgb(136, 88, 143);
-    margin:25px auto;
-    color:white;
+.container {
+  width: 90%;
+  height: 90%;
+  background: rgb(136, 88, 143);
+  margin: 25px auto;
+  color: white;
 }
+
