@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Select from 'react-select'
 import MaterialTable from 'material-table'
 import img_not_found from '../../assets/IMG_NOT_FOUND.png';
+import './table.css';
+
 
 const states = [
  { value: 'alabama',label:'Alabama'},
