@@ -55,18 +55,18 @@
 .main-left-half {
   display: flex;
   flex-direction: column;
-  width: 48vw;
+  width: 49vw;
   padding: 0.5vw;
 }
 
 .main-right-half {
   display: flex;
   flex-direction: column;
-  width: 55vw;
+  width: 49vw;
   padding: 0.5vw;
 }
 .main-both-halves {
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: 99vw;
 }

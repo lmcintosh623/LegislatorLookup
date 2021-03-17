@@ -115,6 +115,7 @@ export default function LandingPage() {
     <div>
 
       <Select
+        className="stateDropdown"
         options={states}
         onChange={handleUserStateChange}
         theme={customTheme}

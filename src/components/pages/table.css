@@ -19,6 +19,13 @@
   margin-right: 5px;
 }
 
+/* .tablepBillMain {
+  position: relative;
+  z-index: 1000;
+  margin-left: 5px;
+  margin-right: 5px;
+} */
+
 .submitButton {
   width: 98vw;
   height: 37.5px;
@@ -40,4 +47,11 @@
   display: flex;
   flex-direction: column;
   padding: 5px;
+}
+
+.stateDropdown {
+  width: 98vw;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 5px;
 }

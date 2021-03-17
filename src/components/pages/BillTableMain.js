@@ -91,6 +91,7 @@ export const BillTableMain=()=>{
 
 
         <MaterialTable 
+          className='tablepBill'
           tableRef={tableRef}
           title ="Bills"
           
