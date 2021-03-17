@@ -17,27 +17,27 @@ export default function Documentation() {
 
         <p class = 'doc-par3'>
 
-        right now we offer the ability to:
+        Right now, we offer the ability to:
         </p>
 
         <p class = 'doc-par4'>
 
-         -Look up legislators in your area via the Legislator tab and navigate to their web page
+         - Look up legislators in your area via the Legislator tab and navigate to their web page
          </p>
 
          <p class = 'doc-par4'>
 
-         -Search through a variety of bills as well as who has cast votes on those bills in the Bills tab
+         - Search through a variety of bills as well as who has cast votes on those bills in the Bills tab
          </p>
 
          <p class = 'doc-par6'>
 
-         -Get Basic information on your states current politicians and recent bills in the Main tab
+         - Get Basic information on your states current politicians and recent bills in the Main tab
          </p>
 
          <p class = 'doc-par7'>
 
-         -As well as an opportunity to navigate to voter registration
+         - As well as an opportunity to navigate to voter registration
          </p>
 
        <p class = 'doc-par8'>
