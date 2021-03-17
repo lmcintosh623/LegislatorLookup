@@ -166,7 +166,7 @@ export const BillTable=()=>{
             search: false,
             paging: true,
             filtering: false,
-            exportButton: true,
+            exportButton: false,
             headerStyle: {
               fontSize: '20',
               backgroundColor: '#7A56D1',

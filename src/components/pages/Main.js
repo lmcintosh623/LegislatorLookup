@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Select from 'react-select'
 import MaterialTable from 'material-table'
 import img_not_found from '../../assets/IMG_NOT_FOUND.png';
+import './table.css'
 
 const states = [
  { value: 'alabama',label:'Alabama'},
@@ -61,7 +62,6 @@ export default function LandingPage() {
   const billsTableRef = React.createRef();
   const legTableRef = React.createRef();
   const[userState, setUserState] = useState('District of Columbia');
-  const[userStateTOF, setUserStateTOF] = useState(false);
 
   function customTheme(theme) {
     return{
@@ -75,9 +75,7 @@ export default function LandingPage() {
     }
   }
 
-  const doChange1 = () => setUserStateTOF(true);
   function handleUserStateChange(e){
-    doChange1() // mark this selection as active
     setUserState(e.label) // set state value to selection contents
     try {
       billsTableRef.current.onQueryChange()

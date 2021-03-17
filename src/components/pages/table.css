@@ -5,11 +5,6 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-/* .tablep2 {
-  position: relative;
-  z-index: 2000;
-  width: 40vw;
-} */
 
 .tablepBill {
   position: relative;
@@ -51,6 +46,7 @@
 
 .stateDropdown {
   width: 98vw;
+  z-index: 2000;
   padding-left: 6px;
   padding-right: 6px;
   padding-top: 5px;
