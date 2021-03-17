@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LegExplore from "./components/pages/LegExplore";
 import BillExplore from "./components/pages/BillExplore";
 import SignUp from "./components/pages/SignUp";
-import About from "./components/pages/About";
 import Main from "./components/pages/Main";
 
 function App() {
@@ -18,8 +17,11 @@ function App() {
         <Route path="/exploreleg" component={LegExplore} />
         <Route path="/explorebill" component={BillExplore} />
         <Route path="/LegislatorLookup" component={Main} />
+        <Route path='/about' component={() => { 
+     window.location.href = 'https://sites.google.com/wwu.edu/legislatorlookup436/home'; 
+     return null;
+}}/>
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/about" component={About} />
         <Route path="/docs" exact component={Documentation} />
       </Switch>
     </Router>
